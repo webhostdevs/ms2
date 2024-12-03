@@ -167,7 +167,7 @@ const HomePage = () => {
                 </ul>
                 <div className="text-right mt-4">
                   <a
-                    href="/details"
+                    href="/"
                     className="text-sm font-medium text-green-500 hover:text-green-600 transition"
                   >
                     View More
