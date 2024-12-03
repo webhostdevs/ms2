@@ -151,7 +151,7 @@ const HomePage = () => {
           ].map(({ title, description, image }) => (
             <div
               key={title}
-              className="flex bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition"
+              className="flex bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition"
             >
               <img
                 src={image}
