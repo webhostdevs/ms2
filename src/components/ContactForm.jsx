@@ -20,31 +20,13 @@ const ContactForm = () => {
   };
 
   return (
-   <div className="pt-5 max-h-screen pb-40 relative bg-gradient-to-r from-green-50 to-green-100  ">
+   <div className="pt-5 h-full relative  bg-aliceBlue ">
     
       <div className="max-w-5xl  mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-5">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-green-800 inline-block text-transparent bg-clip-text">Contact Us</h1>
           
         </div>
-
-
-{/* Decorative Elements */}
-<div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-    {/* Top-left circle */}
-    <div className="absolute top-20 left-10 w-48 h-48 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
-    
-    {/* Top-right circle */}
-    <div className="absolute top-20 right-10 w-48 h-48 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
-    
-    {/* Bottom-left circle */}
-    <div className="absolute bottom-20 left-10 w-48 h-48 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
-    
-    {/* Bottom-right circle */}
-    <div className="absolute bottom-20 right-10 w-48 h-48 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
-</div>
-
-      
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Information */}

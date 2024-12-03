@@ -21,6 +21,8 @@ import { BiMessageDetail } from "react-icons/bi";
 import { GiMeal } from "react-icons/gi";
 import ContactForm from "./ContactForm";
 import Footer from "./Footer";
+import About from "../About";
+import FeedbackForm from "../Feedback";
 
 const Navbar = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(true);
@@ -50,10 +52,10 @@ const Navbar = () => {
   const renderComponent = () => {
     const components = {
       home: <HomePage />,
-      about: <div className="p-4">Team Content</div>,
+      about: <About />,
       services: <div className="p-4">Settings Content</div>,
       contact: <ContactForm />,
-      feedback: <div className="p-4">Feedback Content</div>,
+      feedback: <FeedbackForm />,
       customorder: <div className="p-4">Custom Order Content</div>,
       dashboard: <div className="p-4">Admin Dashboard</div>,
       permissions: <div className="p-4">Permissions Management</div>,
@@ -250,7 +252,7 @@ const Navbar = () => {
         {/* Content Area */}
         <div className="flex-1 overflow-y-auto bg-white">
           {renderComponent()}
-          <Footer />
+          
         </div>
       </div>
     </div>
