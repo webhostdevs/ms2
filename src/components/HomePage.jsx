@@ -7,10 +7,10 @@ import dlb from "../assets/dlb.png";
 
 const HomePage = () => {
   return (
-    <div className="bg-aliceBlue text-black font-sans">
+    <div className="bg-aliceBlue text-black font-sans ">
       <div className="flex">
         <section className="py-7 p-8">
-          <div className="max-w-3xl p-1 mx-auto text-center">
+          <div className="max-w-3xl p-1  text-center">
             <h1 className="text-5xl font-extrabold mb-4 text-gray-800">
               Elevate Your Dining Experience
             </h1>
@@ -51,132 +51,138 @@ const HomePage = () => {
         </section>
 
         <section className="flex items-center justify-center ">
-          <img src={dl} alt="Description" className="object-contain h-full " />
+          <img src={dl} alt="Description" className="object-contain  " />
         </section>
       </div>
       {/* Rest of the component remains the same */}
-      <section className="py-20">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Box Genie",
-              image:
-                "https://5.imimg.com/data5/SELLER/Default/2023/2/BX/WK/QF/5331327/3cp-meal-tray-natraj.jpg",
-              buttonText: "Order Now",
-            },
-            {
-              title: "Home Delivery",
-              image: db,
-              buttonText: "Order Now",
-            },
-            {
-              title: "Bulk Catering",
-              image:
-                "https://5.imimg.com/data5/JU/UP/KR/SELLER-87393189/catering-services-500x500.jpg",
-              buttonText: "Order Now",
-            },
-          ].map(({ title, image, buttonText }) => (
-            <div
-              key={title}
-              className="bg-white  text-black p-6 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2"
-            >
-              <h3 className="text-2xl font-extrabold mb-4 text-gray-800 border-b-2 border-green-500 pb-2">
-                {title}
-              </h3>
-              <img
-                src={image}
-                alt={title}
-                className="mb-4 rounded-md object-fit h-48 w-full transition-transform"
-              />
-              <a
-                href="#"
-                className="bg-gradient-to-r from-green-400 to-green-600 text-white px-4 py-2 rounded-lg font-medium shadow-md hover:from-green-500 hover:to-green-700 hover:shadow-lg transition-transform transform"
-              >
-                {buttonText}
-              </a>
-            </div>
-          ))}
+      <section className="py-10">
+        <div className="max-w-1/2 mx-4 flex justify-evenly items-stretch space-x-4 h-[450px]">
+      {[
+        {
+          title: "Box Genie",
+          image: "https://5.imimg.com/data5/SELLER/Default/2023/2/BX/WK/QF/5331327/3cp-meal-tray-natraj.jpg",
+          buttonText: "Order Now",
+        },
+        {
+          title: "Home Delivery",
+          image: db, // Note: Make sure 'db' is imported or defined
+          buttonText: "Order Now",
+        },
+        {
+          title: "Bulk Catering",
+          image: "https://5.imimg.com/data5/JU/UP/KR/SELLER-87393189/catering-services-500x500.jpg",
+          buttonText: "Order Now",
+        },
+      ].map(({ title, image, buttonText }) => (
+        <div
+          key={title}
+          className="flex-1 bg-aliceBlue text-black p-6 rounded-lg transition-transform transform hover:-translate-y-1 flex flex-col"
+        >
+          <h3 className="text-2xl font-extrabold  text-gray-800 border-b-2 border-green-500 pb-2">
+            {title}
+          </h3>
+          <div className=" flex items-center  justify-center pt-4 pb-4">
+            <img
+              src={image}
+              alt={title}
+              className="rounded-md object-cover h-48 w-full"
+            />
+          </div>
+          <a
+            href="#"
+            className="bg-black text-white w-[130px] px-6 py-2 rounded-3xl font-medium shadow-md hover:shadow-lg transition-transform transform self-center"
+          >
+            {buttonText}
+          </a>
         </div>
+      ))}
+    </div>
       </section>
 
-      <section className="p-20">
+      <section className="p-10 max-h-[900px]">
         <h2 className="text-3xl font-bold mb-12 text-left text-green-700">
           CATERING FOR ALL OF VARIETIES
         </h2>
-        <div className="max-w-6xl mx-auto space-y-6">
-          {[
-            {
-              title: "Wedding Catering",
-              description: [
-                "Engagement",
-                "Haldhi",
-                "Pelli koduku & Pelli Kuthuru",
-                "Marriage",
-                "Vratham",
-              ],
-              image:
-                "https://static01.nyt.com/images/2023/05/14/multimedia/FAT-INDIAN-WEDDINGS-01-hptq/FAT-INDIAN-WEDDINGS-01-hptq-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
-            },
-            {
-              title: "Corporate Events",
-              description: [
-                "Corporate Meeting",
-                "Get together",
-                "Celebrations",
-                "Birthday Parties",
-              ],
-              image: "https://shahipakwaan.in/wp-content/uploads/2023/02/business-people-taking-snacks-from-buffet-table_1262-1701-1.png",
-            },
-            {
-              title: "Event Caterers",
-              description: [
-                "Birthday",
-                "House warming",
-                "Cardel",
-                "Festivals",
-              ],
-              image: "https://www.shutterstock.com/image-photo/big-family-celebrating-diwali-indian-600nw-2334107349.jpg",
-            },
-            {
-              title: "Design your own Menu",
-              description: [
-                "Corporate Meetings",
-                "Birthdays",
-                "Engagements",
-                "Marriage",
-                "Reception",
-              ],
-              image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxa7JfqO3EaPKyw7DOlOFIADBQ8Y-FP7MfLw&s",
-            },
-          ].map(({ title, description, image }) => (
-            <div
-              key={title}
-              className="flex bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition"
-            >
-              <img
-                src={image}
-                alt={title}
-                className="w-32 h-32 object-cover rounded-lg mr-4"
-              />
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-gray-700">{title}</h3>
-                <ul className="list-disc list-inside mt-2 text-sm text-gray-600">
-                  {description.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-                <div className="text-right mt-4">
-                  <a
-                    href="/"
-                    className="text-sm font-medium text-green-500 hover:text-green-600 transition"
-                  >
-                    View More
-                  </a>
-                </div>
+        <div className="max-w-[110%]  mx-auto">
+      <div className="flex space-x-4 overflow-x-auto">
+        {[
+          {
+            title: "Wedding Catering",
+            description: [
+              { text: "Engagement", link: "/engagement" },
+              { text: "Haldhi", link: "/haldhi" },
+              { text: "Pelli koduku & Pelli Kuthuru", link: "/wedding-events" },
+              { text: "Vratham", link: "/vratham" }
+            ],
+            image: "https://static01.nyt.com/images/2023/05/14/multimedia/FAT-INDIAN-WEDDINGS-01-hptq/FAT-INDIAN-WEDDINGS-01-hptq-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+          },
+          {
+            title: "Corporate Events",
+            description: [
+              { text: "Corporate Meeting", link: "/corporate-meeting" },
+              { text: "Get together", link: "/get-together" },
+              { text: "Celebrations", link: "/celebrations" },
+              { text: "Birthday Parties", link: "/birthday-parties" }
+            ],
+            image: "https://shahipakwaan.in/wp-content/uploads/2023/02/business-people-taking-snacks-from-buffet-table_1262-1701-1.png",
+          },
+          {
+            title: "Event Caterers",
+            description: [
+              { text: "Birthday", link: "/birthday" },
+              { text: "House warming", link: "/house-warming" },
+              { text: "Cardel", link: "/cardel" },
+              { text: "Festivals", link: "/festivals" }
+            ],
+            image: "https://www.shutterstock.com/image-photo/big-family-celebrating-diwali-indian-600nw-2334107349.jpg",
+          },
+          {
+            title: "Design your own Menu",
+            description: [
+              { text: "Corporate Meetings", link: "/corporate-meetings" },
+              { text: "Birthdays", link: "/birthdays" },
+              { text: "Marriage", link: "/marriage" },
+              { text: "Reception", link: "/reception" }
+            ],
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxa7JfqO3EaPKyw7DOlOFIADBQ8Y-FP7MfLw&s",
+          }
+        ].map(({ title, description, image }) => (
+          <div 
+            key={title} 
+            className="flex-shrink-0 min-w-[22%] h-[90%] bg-white  rounded-lg shadow-md hover:shadow-lg transition"
+          >
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-48 object-cover  mb-4"
+            />
+            <div className="pl-5 pt-2" >
+              <h3 className="text-lg font-bold text-green-700">{title}</h3>
+              <ul className="list-disc list-inside mt-2 text-sm text-gray-600">
+                {description.map(({ text, link }, index) => (
+                  <li key={index}>
+                    <a 
+                      href={link} 
+                      className="text-gray-600 transition"
+                    >
+                      {text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div className="text-right mt-4 pr-4 pb-4">
+                <a
+                  href={`/${title.toLowerCase().replace(/\s+/g, '-')}`}
+                  className="text-sm font-medium text-green-500 hover:text-green-600 transition"
+                >
+                  View More
+                </a>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
+    </div>
       </section>
     </div>
   );

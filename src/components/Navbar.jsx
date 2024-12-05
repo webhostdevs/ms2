@@ -10,7 +10,7 @@ import {
   Folder,
   UserPlus,
 } from "lucide-react";
-import { FaRing, FaBuilding, FaUtensils, FaBookOpen } from "react-icons/fa";
+import { FaRing, FaBuilding, FaUtensils, FaBookOpen, FaChevronDown } from "react-icons/fa";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import logo from "../assets/logo.png";
 import user from "../assets/user.png";
@@ -22,12 +22,14 @@ import { GiMeal } from "react-icons/gi";
 import ContactForm from "./ContactForm";
 import Footer from "./Footer";
 import About from "../About";
+import eventCategories from './eventCategories.json';
 import FeedbackForm from "../Feedback";
 
 const Navbar = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(true);
   const [selectedComponent, setSelectedComponent] = useState("home");
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   const toggleNavbar = () => {
     setIsNavExpanded(!isNavExpanded);
@@ -47,6 +49,48 @@ const Navbar = () => {
     { icon: <ShieldCheck />, label: "Permissions", key: "permissions" },
     { icon: <Folder />, label: "Resources", key: "resources" },
     { icon: <UserPlus />, label: "User Management", key: "user-management" },
+  ];
+  
+
+  const toggleDropdown = (category) => {
+    setOpenDropdown(openDropdown === category ? null : category);
+  };
+
+  const renderDropdownItems = (category) => {
+    return eventCategories[category].map((item, index) => (
+      <li 
+        key={index} 
+        className="px-4 py-2 hover:bg-green-100 cursor-pointer"
+        onClick={() => {
+          setSelectedComponent(category);
+          setOpenDropdown(null);
+        }}
+      >
+        {item}
+      </li>
+    ));
+  };
+  const dropdownConfig = [
+    {
+      key: "wedding-events",
+      icon: <FaRing className="w-5 h-5" />,
+      label: "Wedding Events"
+    },
+    {
+      key: "corporate-events",
+      icon: <FaBuilding className="w-5 h-5" />,
+      label: "Corporate Events"
+    },
+    {
+      key: "event-catering",
+      icon: <FaUtensils className="w-5 h-5" />,
+      label: "Event Catering"
+    },
+    {
+      key: "design-menu",
+      icon: <FaBookOpen className="w-5 h-5" />,
+      label: "Design Your Menu"
+    }
   ];
 
   const renderComponent = () => {
@@ -176,53 +220,34 @@ const Navbar = () => {
           {/* Right Section: User Profile, Theme Toggle, and Navigation */}
           <div className="flex items-center space-x-6">
             {/* Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-4">
-              <a
-                onClick={() => setSelectedComponent("wedding-events")}
-                className={`flex items-center space-x-2 ${
-                  selectedComponent === "wedding-events"
-                    ? "text-green-700"
-                    : "text-green-500 hover:text-green-600"
-                } cursor-pointer`}
-              >
-                <FaRing className="w-5 h-5" />
-                <span>Wedding Events</span>
-              </a>
-              <a
-                onClick={() => setSelectedComponent("corporate-events")}
-                className={`flex items-center space-x-2 ${
-                  selectedComponent === "corporate-events"
-                    ? "text-green-700"
-                    : "text-green-500 hover:text-green-600"
-                } cursor-pointer`}
-              >
-                <FaBuilding className="w-5 h-5" />
-                <span>Corporate Events</span>
-              </a>
-              <a
-                onClick={() => setSelectedComponent("event-catering")}
-                className={`flex items-center space-x-2 ${
-                  selectedComponent === "event-catering"
-                    ? "text-green-700"
-                    : "text-green-500 hover:text-green-600"
-                } cursor-pointer`}
-              >
-                <FaUtensils className="w-5 h-5" />
-                <span>Event Catering</span>
-              </a>
-              <a
-                onClick={() => setSelectedComponent("design-menu")}
-                className={`flex items-center space-x-2 ${
-                  selectedComponent === "design-menu"
-                    ? "text-green-700"
-                    : "text-green-500 hover:text-green-600"
-                } cursor-pointer`}
-              >
-                <FaBookOpen className="w-5 h-5" />
-                <span>Design Your Menu</span>
-              </a>
+            <nav className="hidden lg:flex items-center space-x-4 relative">
+              {dropdownConfig.map((item) => (
+                <div 
+                  key={item.key} 
+                  className="relative"
+                  onMouseEnter={() => toggleDropdown(item.key)}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
+                  <a
+                    className={`flex items-center space-x-2 ${
+                      selectedComponent === item.key
+                        ? "text-green-700"
+                        : "text-green-500 hover:text-green-600"
+                    } cursor-pointer`}
+                  >
+                    {item.icon}
+                    <span>{item.label}</span>
+                    <FaChevronDown className="w-3 h-3" />
+                  </a>
+                  {openDropdown === item.key && (
+                    <ul className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md border">
+                      {renderDropdownItems(item.key)}
+                    </ul>
+                  )}
+                </div>
+              ))}
             </nav>
-            {/* User Profile Dropdown */}
+                    {/* User Profile Dropdown */}
             <div className="relative">
               <img
                 src={user}
